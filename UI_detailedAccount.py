@@ -28,6 +28,9 @@ def readKey(account, accounts):
         UI_Dashboard.displayMenu(accounts)
         return key
     elif key.upper() == 'M':
+        # excecute modifyAccount() from UI_AccountCreation.py
+        import UI_AccountCreation
+        UI_AccountCreation.modifyAccount(account, accounts)
         return key
     elif key.upper() == 'D':
         return key
