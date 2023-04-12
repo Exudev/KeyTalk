@@ -1,7 +1,7 @@
 import JsonFiles
 import UI_InitialSetUp
 import UI_AccountCreation
-
+import time
 
 accounts = []
 # check if accounts exists using accountsFileExists() from JsonFiles.py, if it does load it into a list of accounts using readAccountsFromFile() from JsonFiles.py
@@ -14,6 +14,9 @@ UI_InitialSetUp.createName()
 UI_AccountCreation.newAccount(accounts)
 #create an ascii menu with the title of "Dashboard", and options which can be executed by pressing a key: N = new account, M = modify account, Q = quit
 def displayMenu(accounts):
+    # pause the program for a second, and then clear the console
+    time.sleep(2)
+    print("\033c")
     print("Dashboard")
     # show up to 15 accounts in accounts, if any, and give an option if there is more to the maximum
     if len(accounts) > 0:
@@ -35,8 +38,19 @@ def displayMenu(accounts):
         UI_AccountCreation.createAccount(accounts)
     # if the user input is M, execute modifyAccount()
     elif userInput.upper() == "M":
-        quit()
-        #modifyAccount()
+        # make a try catch block to check if the imput is a number, if it's not, display an error message and execute displayMenu()
+        try:
+            # promt the user to enter the id of the account they want to modify, save the inputs as "i" and substract 1 from it
+            i = int(input("Please enter the ID of the account you want to modify: ")) - 1
+            # execute printAccount() from UI_detailedAccount.py
+            import UI_detailedAccount
+            UI_detailedAccount.printAccount(accounts[i], accounts)
+        except ValueError:
+            print("Error: Invalid input.")
+            displayMenu(accounts)
+        except IndexError:
+            print("Error: Invalid input.")
+            displayMenu(accounts)
     # if the user input is Q, execute quit()
     elif userInput.upper() == "Q":
         quit()

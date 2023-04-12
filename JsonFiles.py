@@ -2,6 +2,7 @@ import SavedAccount
 import json
 import datetime
 
+# [DateTime management on Json files taken from StackOverflow]
 class JSONDateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, (datetime.date, datetime.datetime)):

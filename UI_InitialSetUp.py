@@ -55,7 +55,7 @@ def createName():
         createdPassword = createPassword(name)
         # if the password matches, do nothing, if not, give an error message and exit the program
         if comparePassword(createdPassword):
-            print("success!")
+            pass
         else:
             print("Error: Password does not match.")
             exit()
