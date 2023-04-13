@@ -1,4 +1,4 @@
-import SavedAccount
+import Models.SavedAccount as SavedAccount
 
 # taking an account as input and printing the details of the account
 def printAccount(account, accounts):
