@@ -43,9 +43,9 @@ def dumps(obj):
 def loads(obj):
     return json.loads(obj, object_hook=datetime_decoder)
     
-filename = "./files/accounts.json"
-encryptedFilename = "./files/encryptedKey.txt"
-nameFilename = "./files/name.txt"
+filename = "./Files/accounts.json"
+encryptedFilename = "./Files/encryptedKey.txt"
+nameFilename = "./Files/name.txt"
 # take a list of accounts, turn them into a json string, and write them to a file
 def writeAccountsToFile(accounts):
     # turn list of accounts into a list of dictionaries
