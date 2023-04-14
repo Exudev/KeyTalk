@@ -1,6 +1,6 @@
 import Models.SavedAccount as SavedAccount
 import datetime
-import JsonFiles
+import Config.JsonFiles as JsonFiles
 
 # create a function that takes a list of accounts, where the user is prompted to create an account with it's website name, username, password and datecreated, and then the account is added to the list of accounts
 def createAccount(accounts):
@@ -16,8 +16,8 @@ def createAccount(accounts):
     # [MODIFIED] saved the accounts to json
     JsonFiles.writeAccountsToFile(accounts)
     # return the list of accounts
-    import UI_Dashboard
-    UI_Dashboard.displayMenu(accounts)
+    import Main
+    Main.displayMenu(accounts)
 
 # create a function that takes a list of accounts, if it's empty, ask the user if it wants to create an account or exit the program, if yes, execute createAccount(), if no, exit the program
 def newAccount(accounts):
@@ -69,8 +69,8 @@ def modifyAccount(account, accounts):
         JsonFiles.writeAccountsToFile(accounts)
         modifyAccount(account, accounts)
     elif userInput.upper() == "B":
-        import UI_Dashboard
-        UI_Dashboard.displayMenu(accounts)
+        import Main
+        Main.displayMenu(accounts)
     else:
         print("Error: Invalid input.")
         modifyAccount(account, accounts)

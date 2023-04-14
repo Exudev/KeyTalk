@@ -1,5 +1,5 @@
 import time
-import UI_InitialSetUp
+import UI.KeyManagement as KeyManagement
 
 active = True
 
@@ -16,9 +16,9 @@ def checkIfActive():
     if active == True:
         startTimer()
     else:
-        #ask the user to reintroduce their password and check it with the password in the file using comparePassword() from UI_InitialSetup.py
+        #ask the user to reintroduce their password and check it with the password in the file using comparePassword() from KeyManagement.py
         password = input("Please enter your password: ")
-        if UI_InitialSetUp.comparePassword(password):
+        if KeyManagement.comparePassword(password):
             startTimer()
         else:
             print("Error: Password does not match.")
