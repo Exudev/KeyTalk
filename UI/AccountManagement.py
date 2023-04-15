@@ -69,8 +69,8 @@ def modifyAccount(account, accounts):
         JsonFiles.writeAccountsToFile(accounts)
         modifyAccount(account, accounts)
     elif userInput.upper() == "B":
-        import Main
-        Main.displayMenu(accounts)
+        import AccountView
+        AccountView.printAccount(account, accounts)
     else:
         print("Error: Invalid input.")
         modifyAccount(account, accounts)
