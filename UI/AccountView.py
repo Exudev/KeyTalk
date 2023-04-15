@@ -36,7 +36,7 @@ def readKey(account, accounts):
         # excecute deleteAccount() from AccountManagement.py
         import UI.AccountManagement as AccountManagement
         AccountManagement.deleteAccount(account, accounts)
-        
+
         return key
     elif key.upper() == 'Q':
         # quit the program
