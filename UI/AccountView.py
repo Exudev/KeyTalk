@@ -33,6 +33,10 @@ def readKey(account, accounts):
         AccountManagement.modifyAccount(account, accounts)
         return key
     elif key.upper() == 'D':
+        # excecute deleteAccount() from AccountManagement.py
+        import UI.AccountManagement as AccountManagement
+        AccountManagement.deleteAccount(account, accounts)
+        
         return key
     elif key.upper() == 'Q':
         return key

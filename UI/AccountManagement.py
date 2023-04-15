@@ -74,3 +74,15 @@ def modifyAccount(account, accounts):
     else:
         print("Error: Invalid input.")
         modifyAccount(account, accounts)
+
+# create a function that delete and update the id of the accounts after the deleted account and save the accounts to the json file 
+def deleteAccount(account, accounts):
+    accounts.remove(account)
+    for i in range(len(accounts)):
+        accounts[i].id = i + 1
+    JsonFiles.writeAccountsToFile(accounts)
+    import Main
+    Main.displayMenu(accounts)
+
+
+    
