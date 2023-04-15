@@ -39,6 +39,8 @@ def readKey(account, accounts):
         
         return key
     elif key.upper() == 'Q':
+        # quit the program
+        quit()
         return key
     elif key.upper() == 'C':
         # copy password to clipboard

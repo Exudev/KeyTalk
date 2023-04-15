@@ -51,6 +51,8 @@ def writeAccountsToFile(accounts):
     # turn list of accounts into a list of dictionaries
     accountDicts = []
     for account in accounts:
+        # encrypt the account using encryptAccount on SavedAccount.py
+        account = account.encryptAccount()
         accountDicts.append(account.__dict__)
     # turn list of dictionaries into a json string
     jsonString = dumps(accountDicts)
@@ -71,6 +73,8 @@ def readAccountsFromFile():
     accounts = []
     for accountDict in accountDicts:
         account = SavedAccount.Account(accountDict["id"], accountDict["websiteName"], accountDict["username"], accountDict["password"], accountDict["dateCreated"], accountDict["dateModified"], accountDict["lastChecked"])
+        # decrypt the account using decryptAccount on SavedAccount.py
+        account = account.decryptAccount()
         accounts.append(account)
     return accounts
 
