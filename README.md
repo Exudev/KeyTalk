@@ -17,3 +17,4 @@ The name is based on the code talker profession, we decided to use the word key 
 
 - Pablo Edu Diaz A.K.A **Exudev**
 - Mariano Vasquez A.K.A **EnreiKazuri**
+- GitHub Copilot
