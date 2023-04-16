@@ -68,3 +68,24 @@ def comparePassword(password):
         return True
     else:
         return False
+    
+# create a function CheckKey that compares an imputed key to the decrypted key using comparePassword(), if it matches, do nothing, if not give an error message and ask the user if they want to exit the program or delete account.json to continue
+def CheckKey(key):
+    key = decryptPassword(key)
+    if comparePassword(key):
+        pass
+    else:
+        print("Error: Key does not match.")
+        print("1. Exit")
+        print("2. Delete all accounts")
+        choice = input("Please enter your choice: ")
+        if choice == "1":
+            exit()
+        elif choice == "2":
+            JsonFiles.deleteAccountFile()
+            print("accounts deleted.")
+            import os
+            os.system('python "./Main.py"')
+        else:
+            print("Error: Invalid choice.")
+            CheckKey(key)

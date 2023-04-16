@@ -1,6 +1,8 @@
 import Models.SavedAccount as SavedAccount
+import Models.AccountList as AccountList
 import json
 import datetime
+import pickle
 
 # [DateTime management on Json files taken from StackOverflow]
 class JSONDateTimeEncoder(json.JSONEncoder):
@@ -46,36 +48,22 @@ def loads(obj):
 filename = "./Files/accounts.json"
 encryptedFilename = "./Files/encryptedKey.txt"
 nameFilename = "./Files/name.txt"
-# take a list of accounts, turn them into a json string, and write them to a file
-def writeAccountsToFile(accounts):
-    # turn list of accounts into a list of dictionaries
-    accountDicts = []
-    for account in accounts:
-        # encrypt the account using encryptAccount on SavedAccount.py
-        account = account.encryptAccount()
-        accountDicts.append(account.__dict__)
-    # turn list of dictionaries into a json string
-    jsonString = dumps(accountDicts)
-    # write json string to file
-    file = open(filename, "w")
-    file.write(jsonString)
-    file.close()
 
-# open file, read json string, turn json string into a list of dictionaries, turn list of dictionaries into a list of accounts, and return the list of accounts
+# create a function that recieves an accountList, turns it into a dictionary and writes it into a json file located on filename
+def writeAccountsToFile(accountList):
+    # file = open(filename, "w")
+    # file.write(dumps(accountList.__dict__))
+    # file.close()
+    with open(filename, "wb") as file:
+        pickle.dump(accountList, file)
+
+# create a function that reads the json file located on filename, turns it into an accountList and returns it
 def readAccountsFromFile():
-    # open file, read json string
-    file = open(filename, "r")
-    jsonString = file.read()
-    file.close()
-    # turn json string into a list of dictionaries
-    accountDicts = loads(jsonString)
-    # turn list of dictionaries into a list of accounts
-    accounts = []
-    for accountDict in accountDicts:
-        account = SavedAccount.Account(accountDict["id"], accountDict["websiteName"], accountDict["username"], accountDict["password"], accountDict["dateCreated"], accountDict["dateModified"], accountDict["lastChecked"])
-        # decrypt the account using decryptAccount on SavedAccount.py
-        account = account.decryptAccount()
-        accounts.append(account)
+    # file = open(filename, "r")
+    # accounts = loads(file.read())
+    # file.close()
+    with open(filename, "rb") as file:
+        accounts = pickle.load(file)
     return accounts
 
 def writeEncryptedPasswordToFile(encryptedPassword):
@@ -117,3 +105,7 @@ def accountsFileExists():
         return True
     except:
         return False
+
+def deleteAccountFile():
+    import os
+    os.remove(filename)
