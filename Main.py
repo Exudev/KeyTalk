@@ -54,15 +54,12 @@ def displayMenu(accountList):
             displayMenu(accountList)
         except IndexError:
             print("Error: Invalid input.")
-   Account-related
             displayMenu(accountList)
-
-            displayMenu(accounts)
+            displayMenu(accountList)
     elif userInput.upper() == 'E':
         # excecute exportAccount
         import UI.AccountManagement as AM
-        AM.exportAccount(accounts)
-        main
+        AM.exportAccount(accountList)
     # if the user input is Q, execute quit()
     elif userInput.upper() == "Q":
         quit()

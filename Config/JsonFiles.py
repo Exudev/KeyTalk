@@ -128,4 +128,4 @@ def deleteAllFiles():
         os.remove(filename)
     if nameFileExists():
         os.remove(nameFilename)
-        main
+
