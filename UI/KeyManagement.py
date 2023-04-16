@@ -68,6 +68,7 @@ def comparePassword(password):
         return True
     else:
         return False
+        Account-related
     
 # create a function CheckKey that compares an imputed key to the decrypted key using comparePassword(), if it matches, do nothing, if not give an error message and ask the user if they want to exit the program or delete account.json to continue
 def CheckKey(key):
@@ -89,3 +90,27 @@ def CheckKey(key):
         else:
             print("Error: Invalid choice.")
             CheckKey(key)
+
+# if encryptedKey.txt exists and name.txt does not exist, or vice versa, ask the user to delete the account and create a new account (warn about deletion of information) or close the application forcibly.
+
+# [MODIFIED] to include the decision of create a new account
+
+def checkIfFilesExist():
+    if JsonFiles.encryptedFileExists() and JsonFiles.nameFileExists() == False:
+        decideCreateOrDoom()
+    elif JsonFiles.encryptedFileExists() == False and JsonFiles.nameFileExists():
+        decideCreateOrDoom()
+
+def decideCreateOrDoom():
+    print("Do you want to create a new password? this option will delete all the old info (1) or exit the program? (2)")
+    print("1. Yes")
+    print("2. No")
+    decision = input("Please enter your choice: ")
+    if decision == "1":
+        JsonFiles.deleteAllFiles()
+    elif decision == "2":
+        exit()
+    else:
+        print("Error: Invalid input.")
+        decideCreateOrDoom()
+        main

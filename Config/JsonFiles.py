@@ -105,7 +105,27 @@ def accountsFileExists():
         return True
     except:
         return False
+        Account-related
 
 def deleteAccountFile():
     import os
     os.remove(filename)
+
+#check if encriptedKey exists, return true is it does, false if dosent
+def encryptedFileExists():
+    try:
+        file = open(encryptedFilename, "r")
+        file.close()
+        return True
+    except:
+        return False
+#create a function that deletes all files, check if they exists first using encryptedFileExists, accountsFileExists and nameFileExists
+def deleteAllFiles():
+    import os
+    if encryptedFileExists():
+        os.remove(encryptedFilename)
+    if accountsFileExists():
+        os.remove(filename)
+    if nameFileExists():
+        os.remove(nameFilename)
+        main

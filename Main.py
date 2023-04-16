@@ -12,6 +12,7 @@ if JsonFiles.accountsFileExists() == True:
     KeyManagement.CheckKey(accountList.key)
 # else:
 #     return []
+KeyManagement.checkIfFilesExist()
 KeyManagement.createName()
 AccountManagement.newAccount(accountList)
 #create an ascii menu with the title of "Dashboard", and options which can be executed by pressing a key: N = new account, M = modify account, Q = quit
@@ -32,6 +33,7 @@ def displayMenu(accountList):
                 break
     print("N = New Account")
     print("M = Modify Account")
+    print("E = Export encripted data ")
     print("Q = Quit")
     # get user input
     userInput = input("Please enter a command: ")
@@ -52,7 +54,15 @@ def displayMenu(accountList):
             displayMenu(accountList)
         except IndexError:
             print("Error: Invalid input.")
+   Account-related
             displayMenu(accountList)
+
+            displayMenu(accounts)
+    elif userInput.upper() == 'E':
+        # excecute exportAccount
+        import UI.AccountManagement as AM
+        AM.exportAccount(accounts)
+        main
     # if the user input is Q, execute quit()
     elif userInput.upper() == "Q":
         quit()
