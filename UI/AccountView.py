@@ -33,17 +33,26 @@ def readKey(account, accounts):
         AccountManagement.modifyAccount(account, accounts)
         return key
     elif key.upper() == 'D':
+        # excecute deleteAccount() from AccountManagement.py
+        import UI.AccountManagement as AccountManagement
+        AccountManagement.deleteAccount(account, accounts)
+
         return key
     elif key.upper() == 'Q':
+        # quit the program
+        quit()
         return key
     elif key.upper() == 'C':
         # copy password to clipboard
         import pyperclip
-        import Main
-        pyperclip.copy(str(account.password))
-        print("Password copied to clipboard!")
-        Main.displayMenu(accounts)
-        return key
+        #make a try cath where you copy the password to the clipboard, catch any exception and print it to the user
+        try:
+            pyperclip.copy(str(account.password))
+            print("Password copied to clipboard!")
+            import Main
+            Main.displayMenu(accounts)
+        except Exception as e:
+            print(e)
     else:
         print("Invalid key!")
         return readKey()

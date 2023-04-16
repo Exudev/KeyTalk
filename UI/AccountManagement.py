@@ -19,12 +19,13 @@ def createAccount(accounts):
     import Main
     Main.displayMenu(accounts)
 
-# create a function that takes a list of accounts, if it's empty, ask the user if it wants to create an account or exit the program, if yes, execute createAccount(), if no, exit the program
+# create a function that takes a list of accounts, if it's empty, ask the user if it wants to create an account or exit the program, if yes, execute createAccount(), if no, exit the program, empty means yes
 def newAccount(accounts):
     if len(accounts) == 0:
-        print("There are no accounts.")
-        userInput = input("Would you like to create an account? (Y/N): ")
-        if userInput.upper() == "Y":
+        print("You have no accounts saved.")
+        userInput = input("Would you like to create an account? (Y/n): ")
+        userInput.strip()
+        if userInput.upper() == "Y" or userInput == "":
             createAccount(accounts)
         elif userInput.upper() == "N":
             quit()
@@ -69,8 +70,20 @@ def modifyAccount(account, accounts):
         JsonFiles.writeAccountsToFile(accounts)
         modifyAccount(account, accounts)
     elif userInput.upper() == "B":
-        import Main
-        Main.displayMenu(accounts)
+        import AccountView
+        AccountView.printAccount(account, accounts)
     else:
         print("Error: Invalid input.")
         modifyAccount(account, accounts)
+
+# create a function that delete and update the id of the accounts after the deleted account and save the accounts to the json file 
+def deleteAccount(account, accounts):
+    accounts.remove(account)
+    for i in range(len(accounts)):
+        accounts[i].id = i + 1
+    JsonFiles.writeAccountsToFile(accounts)
+    import Main
+    Main.displayMenu(accounts)
+
+
+    
