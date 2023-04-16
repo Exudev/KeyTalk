@@ -31,6 +31,7 @@ def displayMenu(accounts):
                 break
     print("N = New Account")
     print("M = Modify Account")
+    print("E = Export encripted data ")
     print("Q = Quit")
     # get user input
     userInput = input("Please enter a command: ")
@@ -52,6 +53,10 @@ def displayMenu(accounts):
         except IndexError:
             print("Error: Invalid input.")
             displayMenu(accounts)
+    elif userInput.upper() == 'E':
+        # excecute exportAccount
+        import UI.AccountManagement as AM
+        AM.exportAccount(accounts)
     # if the user input is Q, execute quit()
     elif userInput.upper() == "Q":
         quit()
