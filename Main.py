@@ -34,6 +34,7 @@ def displayMenu(accountList):
     print("N = New Account")
     print("M = Modify Account")
     print("E = Export encripted data ")
+    print("D = Delete all files")
     print("Q = Quit")
     # get user input
     userInput = input("Please enter a command: ")
@@ -63,6 +64,21 @@ def displayMenu(accountList):
     # if the user input is Q, execute quit()
     elif userInput.upper() == "Q":
         quit()
+    # if the user input is D, execute deleteAllFiles() from JsonFiles.py and ask if the user is sure
+    elif userInput.upper() == "D":
+        print("Are you sure you want to delete all files?")
+        print("Y = Yes")
+        print("N = No")
+        userInput = input("Please enter a command: ")
+        if userInput.upper() == "Y":
+            JsonFiles.deleteAllFiles()
+            quit()
+        elif userInput.upper() == "N":
+            displayMenu(accountList)
+        else:
+            print("Error: Invalid input.")
+            displayMenu(accountList)
+   
     # if the user input is not N, M, or Q, display an error message and execute displayMenu()
     else:
         print("Error: Invalid input.")
