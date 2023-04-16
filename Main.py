@@ -10,6 +10,7 @@ if JsonFiles.accountsFileExists() == True:
     accounts = JsonFiles.readAccountsFromFile()
 # else:
 #     return []
+KeyManagement.checkIfFilesExist()
 KeyManagement.createName()
 AccountManagement.newAccount(accounts)
 #create an ascii menu with the title of "Dashboard", and options which can be executed by pressing a key: N = new account, M = modify account, Q = quit
