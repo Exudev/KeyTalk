@@ -85,5 +85,17 @@ def deleteAccount(account, accounts):
     import Main
     Main.displayMenu(accounts)
 
+#create a function that exports the accounts.json in Files directory
+def exportAccount(accounts):
+    import os
+    import shutil
+    # [MODIFIED] added try and except to handle errors
+    try:
+        shutil.copyfile("Files/accounts.json", "export/accounts.json")
+        print("Accounts exported successfully.")
+    except:
+        print("Error: Failed to export accounts.")
+    import Main
+    Main.displayMenu(accounts)
 
     
