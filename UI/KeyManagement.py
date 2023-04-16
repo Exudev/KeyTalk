@@ -68,3 +68,25 @@ def comparePassword(password):
         return True
     else:
         return False
+# if encryptedKey.txt exists and name.txt does not exist, or vice versa, ask the user to delete the account and create a new account (warn about deletion of information) or close the application forcibly.
+
+# [MODIFIED] to include the decision of create a new account
+
+def checkIfFilesExist():
+    if JsonFiles.encryptedFileExists() and JsonFiles.nameFileExists() == False:
+        decideCreateOrDoom()
+    elif JsonFiles.encryptedFileExists() == False and JsonFiles.nameFileExists():
+        decideCreateOrDoom()
+
+def decideCreateOrDoom():
+    print("Do you want to create a new password? this option will delete all the old info (1) or exit the program? (2)")
+    print("1. Yes")
+    print("2. No")
+    decision = input("Please enter your choice: ")
+    if decision == "1":
+        JsonFiles.deleteAllFiles()
+    elif decision == "2":
+        exit()
+    else:
+        print("Error: Invalid input.")
+        decideCreateOrDoom()
