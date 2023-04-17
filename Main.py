@@ -71,8 +71,11 @@ def displayMenu(accountList):
         print("N = No")
         userInput = input("Please enter a command: ")
         if userInput.upper() == "Y":
+            
             JsonFiles.deleteAllFiles()
-            quit()
+            print("All files have been deleted, the program will close now.")
+            time.sleep(5)
+            quit()    
         elif userInput.upper() == "N":
             displayMenu(accountList)
         else:
