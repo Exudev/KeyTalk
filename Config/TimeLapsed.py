@@ -1,5 +1,6 @@
 import time
 import UI.KeyManagement as KeyManagement
+import asyncio
 
 # Make this timer a singleton
 class TimeLapsed:
@@ -22,7 +23,6 @@ active = True
 def startTimer():
     global active
     active = True
-    time.sleep(300)
     active = False
 
 # Check if the user is active, if they are, start the timer again
