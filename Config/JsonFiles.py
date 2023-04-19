@@ -133,7 +133,7 @@ def deleteAllFiles():
 
 def initialSetUp():
     import os
-    if not os.path.exists(filesFolder):
+    if os.path.exists(filesFolder) == False:
         os.makedirs(filesFolder)
-    if not os.path.exists(exportFolder):
-        os.makedirs(filesFolder)
+    if os.path.exists(exportFolder) == False:
+        os.makedirs(exportFolder)
