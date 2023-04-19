@@ -43,6 +43,9 @@ def decryptPassword(encryptedPassword):
 # check if a nameFilename exist using nameFileExists() from JsonFiles.py, if not prompt the user to input a name and save it to a file using writeNameToFile() from JsonFiles.py
 def createName():
     if JsonFiles.nameFileExists() == False:
+        # clear the console
+        import os
+        os.system('cls')
         name = input("Please enter your name: ")
         JsonFiles.writeNameToFile(name)
         createdPassword = WritePasswordToFile(name)
@@ -56,6 +59,7 @@ def createName():
         createdPassword = createPassword(name)
         # if the password matches, do nothing, if not, give an error message and exit the program
         if comparePassword(createdPassword):
+            enterApp()
             pass
         else:
             print("Error: Password does not match.")
@@ -107,8 +111,25 @@ def decideCreateOrDoom():
     decision = input("Please enter your choice: ")
     if decision == "1":
         JsonFiles.deleteAllFiles()
+        import Main
+        Main.initialSetup()
     elif decision == "2":
         exit()
     else:
         print("Error: Invalid input.")
         decideCreateOrDoom()
+
+# ask the user to imput their master key using comparePassword(), after 3 tries give the option to exit the program by pressing Q or to reset the app using decideCreateorDoom()
+def enterApp():
+    for i in range(3):
+        # clear the console
+        import os
+        os.system('cls')
+        print("Try " + str(i + 1) +  " of 3")
+        key = input("Please enter your master key: ")
+        key.strip()
+        if key == "Q":
+            exit()
+        else:
+            comparePassword(key)
+    decideCreateOrDoom()

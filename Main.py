@@ -3,18 +3,18 @@ import UI.KeyManagement as KeyManagement
 import UI.AccountManagement as AccountManagement
 import Models.AccountList as AccountList
 import time
+import os
 
-accountList = AccountList.AccountList("", [])
-# check if accounts exists using accountsFileExists() from JsonFiles.py, if it does load it into a list of accounts using readAccountsFromFile() from JsonFiles.py
-#def loadAccounts():
-if JsonFiles.accountsFileExists() == True:
-    accountList = JsonFiles.readAccountsFromFile()
-    KeyManagement.CheckKey(accountList.key)
-# else:
-#     return []
-KeyManagement.checkIfFilesExist()
-KeyManagement.createName()
-AccountManagement.newAccount(accountList)
+def initialSetup():
+    accountList = AccountList.AccountList("", [])
+    # check if accounts exists using accountsFileExists() from JsonFiles.py, if it does load it into a list of accounts using readAccountsFromFile() from JsonFiles.py
+    if JsonFiles.accountsFileExists() == True:
+        accountList = JsonFiles.readAccountsFromFile()
+        KeyManagement.CheckKey(accountList.key)
+    KeyManagement.checkIfFilesExist()
+    KeyManagement.createName()
+    AccountManagement.newAccount(accountList)
+    displayMenu(accountList)
 #create an ascii menu with the title of "Dashboard", and options which can be executed by pressing a key: N = new account, M = modify account, Q = quit
 def displayMenu(accountList):
     # pause the program for a second, and then clear the console
@@ -86,5 +86,4 @@ def displayMenu(accountList):
         print("Error: Invalid input.")
         displayMenu(accountList)
 
-displayMenu(accountList)
-#fix
+initialSetup()
