@@ -50,4 +50,6 @@ def checkPasswordForTimer():
             #sleep for 2 seconds
             time.sleep(2)
             i += 1
-    exit()
+            if i == 5:
+                print("Error: You have exceeded the number of attempts.")
+                exit()
