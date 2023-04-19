@@ -3,6 +3,8 @@ import Models.AccountList as AccountList
 
 # taking an account as input and printing the details of the account
 def printAccount(account, accountList):
+    # clear the console
+    print("\033c")
     print("ID: " + str(account.id))
     print("Website Name: " + account.websiteName)
     print("Username: " + account.username)

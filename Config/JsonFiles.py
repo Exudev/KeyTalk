@@ -48,22 +48,24 @@ def loads(obj):
 filename = "./Files/accounts.json"
 encryptedFilename = "./Files/encryptedKey.txt"
 nameFilename = "./Files/name.txt"
+filesFolder = "./Files"
+exportFolder = "./Exports"
 
 # create a function that recieves an accountList, turns it into a dictionary and writes it into a json file located on filename
 def writeAccountsToFile(accountList):
-    # file = open(filename, "w")
-    # file.write(dumps(accountList.__dict__))
-    # file.close()
+    # go through the list of accounts and encrypt them using the encryptAccount() function
+    for account in accountList.accounts:
+        account.encryptAccount()
     with open(filename, "wb") as file:
         pickle.dump(accountList, file)
 
 # create a function that reads the json file located on filename, turns it into an accountList and returns it
 def readAccountsFromFile():
-    # file = open(filename, "r")
-    # accounts = loads(file.read())
-    # file.close()
     with open(filename, "rb") as file:
         accounts = pickle.load(file)
+    # go through the list of accounts and decrypt them using the decryptAccount() function
+    for account in accounts.accounts:
+        account.decryptAccount()
     return accounts
 
 def writeEncryptedPasswordToFile(encryptedPassword):
@@ -129,3 +131,9 @@ def deleteAllFiles():
     if nameFileExists():
         os.remove(nameFilename)
 
+def initialSetUp():
+    import os
+    if os.path.exists(filesFolder) == False:
+        os.makedirs(filesFolder)
+    if os.path.exists(exportFolder) == False:
+        os.makedirs(exportFolder)
