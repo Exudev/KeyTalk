@@ -20,4 +20,5 @@ The name is based on the code talker profession, we decided to use the word key 
 - Manuel Mañón A.K.A **manuelusion**
 - Axel Genao A.K.A **AxelGenao**
 - Abel Garcia A.K.A **SansEkeleton**
+- Carlos Romero A.K.A **Carlos1kaiser1Romero**
 - GitHub Copilot
