@@ -19,4 +19,5 @@ The name is based on the code talker profession, we decided to use the word key 
 - Mariano Vasquez A.K.A **EnreiKazuri**
 - Manuel Mañón A.K.A **manuelusion**
 - Axel Genao A.K.A **AxelGenao**
+- Abel Garcia A.K.A **SansEkeleton**
 - GitHub Copilot
