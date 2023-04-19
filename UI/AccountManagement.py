@@ -95,7 +95,7 @@ def exportAccount(accounts):
     import shutil
     # [MODIFIED] added try and except to handle errors
     try:
-        shutil.copyfile("Files/accounts.json", "export/accounts.json")
+        shutil.copyfile("Files/accounts.json", "Export/accounts.json")
         print("Accounts exported successfully.")
     except:
         print("Error: Failed to export accounts.")

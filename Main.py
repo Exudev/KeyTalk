@@ -8,6 +8,7 @@ import os
 
 def initialSetup():
     accountList = AccountList.AccountList("", [])
+    JsonFiles.initialSetUp()
     # check if accounts exists using accountsFileExists() from JsonFiles.py, if it does load it into a list of accounts using readAccountsFromFile() from JsonFiles.py
     if JsonFiles.accountsFileExists() == True:
         accountList = JsonFiles.readAccountsFromFile()

@@ -48,6 +48,8 @@ def loads(obj):
 filename = "./Files/accounts.json"
 encryptedFilename = "./Files/encryptedKey.txt"
 nameFilename = "./Files/name.txt"
+filesFolder = "./Files"
+exportFolder = "./Exports"
 
 # create a function that recieves an accountList, turns it into a dictionary and writes it into a json file located on filename
 def writeAccountsToFile(accountList):
@@ -129,3 +131,9 @@ def deleteAllFiles():
     if nameFileExists():
         os.remove(nameFilename)
 
+def initialSetUp():
+    import os
+    if not os.path.exists(filesFolder):
+        os.makedirs(filesFolder)
+    if not os.path.exists(exportFolder):
+        os.makedirs(filesFolder)
